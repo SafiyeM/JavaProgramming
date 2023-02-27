@@ -2,11 +2,12 @@ package day09;
 
 public class CrewAndPassengers {
     public static void main(String[] args) {
-        int number=50;
 
 
 
+        int number=75;
 
+       //Solution1: Use ternary. Do not use more than one println()
         String result1=(number==50 || number==75 || number==100)? //pre-condition
 
                 (number==50)?  "20 crew, 30 passengers"
@@ -20,9 +21,27 @@ public class CrewAndPassengers {
 
         System.out.println("_____________________________________________________");
 
+        // Solution2: Use switch statement. Do not use more than one println()
 
+        String result2= "";
 
+        switch (number){
 
+            case 50:
+                result2="20 crew, 30 passengers";
+                break;
+            case 75:
+                result2="25 crew, 50 passengers";
+                break;
+            case 100:
+                result2="30 crew, 70 passengers";
+                break;
+            default:
+                result2= "invalid";
+
+        }
+
+        System.out.println(result2);
 
 
 
