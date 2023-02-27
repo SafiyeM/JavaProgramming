@@ -1,4 +1,4 @@
-package day09;
+package day09_scanner;
 
 public class IfAndSwitch {
     public static void main(String[] args) {
