@@ -9,6 +9,12 @@ public class TestCredential {
 
         System.out.println(credentials);
 
+        credentials.setPassword("Cydeo#Batch29");
+
+        System.out.println(credentials.getPassword());
+
+
+
 
 
 
