@@ -61,6 +61,14 @@ public class Credentials {
         // Finally, the method returns true if all five boolean are true, and false otherwise.
     }
 
+
+    @Override
+    public String toString() {
+        return "Credentials{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }
 
 
