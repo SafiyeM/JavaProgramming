@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class ReadFilesWithScanner {
     public static void main(String[] args) throws IOException {
 
-       Scanner scan= new Scanner( Path.of("src/day_10_string/ClassNotes.txt") ); //-->> to read a file
+       Scanner scan= new Scanner( Path.of("src/day_10_string/ClassNotes.txt.txt.txt") ); //-->> to read a file
 
 
         System.out.println( scan.nextLine()); // returns first line of our text
