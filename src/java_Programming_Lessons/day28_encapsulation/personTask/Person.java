@@ -1,4 +1,4 @@
-package src.java_Programming_Lessons.day28_encapsulation.personTask;
+package java_Programming_Lessons.day28_encapsulation.personTask;
 
 public class Person {
 

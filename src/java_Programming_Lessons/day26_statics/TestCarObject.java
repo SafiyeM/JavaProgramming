@@ -1,4 +1,4 @@
-package src.java_Programming_Lessons.day26_statics;
+package java_Programming_Lessons.day26_statics;
 
 public class TestCarObject {
 

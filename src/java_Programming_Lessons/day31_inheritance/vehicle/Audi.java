@@ -1,4 +1,4 @@
-package src.java_Programming_Lessons.day31_inheritance.vehicle;
+package java_Programming_Lessons.day31_inheritance.vehicle;
 
 public class Audi extends Car{
 

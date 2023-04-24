@@ -1,15 +1,17 @@
 package java_Live_Review.week11.olympicSports;
 
-public class Soccer extends OlympicSport{
+import office_Hours.week11.morning.workout.OlympicSport;
+
+public class Soccer extends OlympicSport {
 
 
     public Soccer(String name, int participants) {
         super(name, participants);
     }
 
-    @Override
-    public void compete() {
-        System.out.println(name+ " playing a soccer game");
+    public void compete(){
+      System.out.println(" \" playing a soccer game\"");
+
     }
 }
 /*

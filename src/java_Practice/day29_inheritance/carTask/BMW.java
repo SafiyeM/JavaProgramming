@@ -1,4 +1,4 @@
-package src.java_Practice.day29_inheritance.carTask;
+package java_Practice.day29_inheritance.carTask;
 
 public class BMW extends Car {
 

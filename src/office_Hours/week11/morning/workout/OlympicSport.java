@@ -1,6 +1,8 @@
-package java_Live_Review.week11.olympicSports;
+package office_Hours.week11.morning.workout;
 
 public class OlympicSport {
+
+
 
     String name;
     int participants;
@@ -28,19 +30,14 @@ public class OlympicSport {
 }
 /*
 Create a class OlympicSport
-
 		instance variables
 			- name (String)
 			- participants (int)
-
 		static variable: year of first Olympics: 1896
-
 		constructor:
 			- initialize all fields
-
 		methods:
 			- compete()
 		-> override compete in subclasses
-
 		 - override toString()
  */

@@ -1,4 +1,4 @@
-package src.java_Programming_Lessons.day29_inheritance.animalTask;
+package java_Programming_Lessons.day29_inheritance.animalTask;
 
 public class Cat extends Animal {
 

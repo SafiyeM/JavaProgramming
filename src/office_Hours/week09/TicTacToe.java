@@ -10,7 +10,7 @@ public class TicTacToe {
                 // 0   1   2
                 {'X', 'X', 'X'},  //0
                 {'X', 'X', 'O'},  //1
-                {'O', 'O', 'O'}  //2
+                {'O', 'O', 'O'}   //2
 
         };
         //array name        //rownumber     columnnumber

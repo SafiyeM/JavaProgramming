@@ -1,4 +1,4 @@
-package src.java_Programming_Lessons.day31_inheritance.shape_methodOverriding;
+package java_Programming_Lessons.day31_inheritance.shape_methodOverriding;
 
 public class Circle extends Shape {
 

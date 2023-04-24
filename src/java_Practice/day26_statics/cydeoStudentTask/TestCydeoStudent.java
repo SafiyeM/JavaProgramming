@@ -1,6 +1,8 @@
 package java_Practice.day26_statics.cydeoStudentTask;
 
 public class TestCydeoStudent {
+
+
     public static void main(String[] args) {
 
 

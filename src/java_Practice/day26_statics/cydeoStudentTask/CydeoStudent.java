@@ -1,4 +1,4 @@
-package src.java_Practice.day26_statics.cydeoStudentTask;
+package java_Practice.day26_statics.cydeoStudentTask;
 
 public class CydeoStudent {
 
