@@ -12,11 +12,14 @@ public class TestPersonObjects {
         Person person4 = new Person("Lucy", 25, 'F', "English");
 
 
+        System.out.println(person4.name);
         person4.name ="James";
+        System.out.println(person4.name);
+        System.out.println();
 
         // person1.planet = "Mars"; //-> calling static through object name is not a good practice
         // Person.planet = "Mars"; // because static does not belong to objects, it belongs to class
-
+        System.out.println(Person.planet); // we can call through class name
 
         System.out.println(person1);
         System.out.println(person2);

@@ -13,21 +13,26 @@ public class Person {
     public static int numberOfHead;
 
 
-    public Person(String name) { // allows us to create Person object just by setting the name of the person
+    // allows us to create Person object just by setting the name of the person
+    public Person(String name) {
+
         this.name = name;
     }
 
-    public Person(String name, int age) { // allows us to create Person object just by setting the name & age of the person
+    // allows us to create Person object just by setting the name & age of the person
+    public Person(String name, int age) {
         this(name); // constructor calling has to be at first step
         this.age = age;
     }
 
-    public Person(String name, String language) { // allows us to create Person object just by setting the name & language of the person
+    // allows us to create Person object just by setting the name & language of the person
+    public Person(String name, String language) {
         this(name);  // first constructor calling
         this.language = language;
     }
 
-    public Person(String name, char gender) { // allows us to create Person object just by setting the name & gender of the person
+    // allows us to create Person object just by setting the name & gender of the person
+    public Person(String name, char gender) {
         this(name);
         this.gender = gender;
     }
@@ -68,7 +73,8 @@ public class Person {
     }
 
 
-    public String toString() {  // this method is instance method and accepts both instance and static
+    // this method is instance method and accepts both instance and static
+    public String toString() {
         return "Person{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
