@@ -1,0 +1,37 @@
+Java Programming Day32
+
+Topics: Overriding vs Overloading
+		Final Keyword
+
+   METHOD OVERLOADING:
+
+   * is for multiple different methods with the same name
+
+   * is performed within class
+
+   * parameter must be different
+
+   * Access specifier can be changed
+
+   * private and final methods can be overloaded
+
+   * return type of method does not matter, it can be same or different
+
+
+
+    METHOD OVERRIDING.
+
+    * is for one method with different implementation
+
+    * is performed in subclass
+
+    * parameter and name must be same
+
+    * Access specifier must not be more restrictive than original method
+
+    * private and final methods can not be overridden
+
+    * Return type must be same in method overriding
+
+    * Less memory usage and Improves the re-usability of our code
+

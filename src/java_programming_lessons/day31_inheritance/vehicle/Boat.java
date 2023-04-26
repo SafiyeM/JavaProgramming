@@ -1,0 +1,21 @@
+package java_programming_lessons.day31_inheritance.vehicle;
+
+public class Boat extends Vehicle {
+
+
+    public Boat(String brand, String model, String color, int year, double price) {
+        super(brand, model, color, year, price);
+    }
+
+    public void sail(){
+
+        System.out.println("Sailing " + getBrand() + " " + getModel());
+    }
+
+}
+/*
+4. Create a subclass of Vehicle named Boat
+
+			Extra methods:
+				sail()
+ */
