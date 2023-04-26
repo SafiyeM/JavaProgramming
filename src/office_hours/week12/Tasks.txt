@@ -51,7 +51,7 @@ Candy [inheritance, constructor, static]
 
         declare a static variables:
             - number of total candy in the world: 500,000
-            - country with largest candy consumption: United States
+            - country with the largest candy consumption: United States
 
         create a constructor to set all instance variables
 
@@ -91,15 +91,15 @@ Season [overriding, inheritance, constructors]
 
         instance variables
             - name
-            - highest average temperature
-            - lowest average temperature
+            - the highest average temperature
+            - the lowest average temperature
 
         constructor:
             - initialize all fields
 
         methods:
             - activity(), toString()
-            override activity in sub classes
+            override activity in subclasses
 
     Create a class Winter
         child class of Season
