@@ -27,7 +27,7 @@ Topics: Overriding vs Overloading
 
     * parameter and name must be same
 
-    * Access specifier must not be more restrictive than original method
+    * Access specifier must NOT be more restrictive than original method
 
     * private and final methods can not be overridden
 
