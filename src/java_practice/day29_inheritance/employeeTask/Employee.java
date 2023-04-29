@@ -2,26 +2,6 @@ package java_practice.day29_inheritance.employeeTask;
 
 public class Employee {
 
-    /*
-    employeeTask:
-	1. Create a custom Class named Tester
-			Variables:
-				name, gender, age, id, jobTitle, salary
-
-			Encapsulate all the fields
-				Conditions:
-					1. gender can only be 'M' or 'F'
-					2. age can not be negative
-					3. age MUST be between 18 - 65
-					4. salary can not be negative
-
-			Methods:
-				setInfo(): sets all the fields
-				testing()
-				toString(): prints tester object info when the object is passed in the print statement
-     */
-
-
     private String name;
     private char gender;
     private int age;
@@ -33,7 +13,7 @@ public class Employee {
         setGender(gender);
         setAge(age);
         setId(id);
-        setJobTitle(jobTitle);
+        this.jobTitle = getClass().getSimpleName();
         setSalary(salary);
     }
 
@@ -52,16 +32,12 @@ public class Employee {
     //  gender can only be 'M' or 'F'
     public void setGender(char gender) {
 
-        if (gender == 'M' || gender == 'F'){
-            this.gender = gender;
-        }else{
-            System.out.println("gender can only be 'M' or 'F'");
+        if (!(gender == 'M' || gender == 'F')) {
+            System.out.println("Invalid gender");
             System.exit(1);
-
         }
-
-        }
-
+        this.gender = gender;
+    }
 
     public int getAge() {
         return age;
@@ -70,12 +46,12 @@ public class Employee {
     //age can not be negative
     //age MUST be between 18 - 65
     public void setAge(int age) {
-        if(age < 0){
+        if (age < 0) {
             System.err.println("age can not be negative");
-            return;
+            System.exit(1);
         }
 
-        if (age < 18 || age > 65 ){
+        if (age < 18 || age > 65) {
             System.out.println("age MUST be between 18 - 65");
             System.exit(1);
         }
@@ -105,7 +81,7 @@ public class Employee {
     // salary can not be negative
     public void setSalary(double salary) {
 
-        if (salary < 0){
+        if (salary < 0) {
             System.err.println("salary can not be negative");
             System.exit(1);
         }
@@ -124,3 +100,21 @@ public class Employee {
                 '}';
     }
 }
+    /*
+    employeeTask:
+	1. Create a custom Class named Tester
+			Variables:
+				name, gender, age, id, jobTitle, salary
+
+			Encapsulate all the fields
+				Conditions:
+					1. gender can only be 'M' or 'F'
+					2. age can not be negative
+					3. age MUST be between 18 - 65
+					4. salary can not be negative
+
+			Methods:
+				setInfo(): sets all the fields
+				testing()
+				toString(): prints tester object info when the object is passed in the print statement
+     */
