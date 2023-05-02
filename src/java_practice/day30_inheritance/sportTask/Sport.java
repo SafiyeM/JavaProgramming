@@ -33,7 +33,7 @@ public class Sport {
 
         if (numberOfPlayers <= 0){
             System.err.println("Invalid number of player: " +numberOfPlayers);
-            return;
+            System.exit(1);
         }
         this.numberOfPlayers = numberOfPlayers;
     }
