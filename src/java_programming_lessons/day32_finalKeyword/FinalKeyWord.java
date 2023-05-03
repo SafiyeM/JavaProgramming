@@ -41,7 +41,7 @@ public final class FinalKeyWord extends Student { // there would be COMPILER ERR
 
 
     /*
-    // EXAMPLE of applying final to an CONSTRUCTOR -> NO FINAL FOR CONSTRUCTOR
+    // EXAMPLE of applying final to a CONSTRUCTOR -> NO FINAL FOR CONSTRUCTOR
 
     public final FinalKeyWord() { -> compile error
     }
