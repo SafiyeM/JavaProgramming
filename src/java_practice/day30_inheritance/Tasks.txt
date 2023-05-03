@@ -94,7 +94,7 @@ deviceTask (Extra Spicy)
 				toString()
 
 
-	2. Create The following subclasses of Devica
+	2. Create The following subclasses of Device
 
 			1. Phone
 				Extra methods:
