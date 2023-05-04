@@ -41,12 +41,10 @@ What is the purpose of having a method?
 
 -Everytime when we call the method, we make a group of code fragment/implementation which is going to perform a task for us.
 -Every single method must have an implementation in its body, otherwise the method is useless, there is no point to creat a method without an implementation.
--However, abstract method does not have any implementation in its body beside it does not have any body.
+-However, abstract method does not have any implementation in its body beside it does not have a body.
 
 How can we give the implementation to the ABSTRACT METHOD?
 -In order to give an implementation that are needed to perform a task, we give the implementation through the METHOD OVERRIDING in SUBCLASSES. So eventually the abstract method will have an implementation in subclasses.
-
-
 
 
 
