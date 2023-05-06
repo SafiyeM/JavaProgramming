@@ -4,6 +4,9 @@ public class TestCarObjects {
 
     public static void main(String[] args) {
 
+       // Car car1 = new Car("X6", "Red", 2020,45000); -> Car is abstract, can not be instantiated
+
+        // Subclasses are concrete classes(non-abstract), we can create objects from those classes
        Honda honda = new Honda("Pilot", "Black", 2019, 35000);
        Audi audi = new Audi("Q6", "Silver", 2020, 36000);
        Tesla tesla = new Tesla("Model Y", "Blue", 2022, 60000);
