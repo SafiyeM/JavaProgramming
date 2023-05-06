@@ -45,7 +45,7 @@ Animal task:
 	interface Wild:
 			hunt();
 
-	interface Plyable
+	interface Playable
 			play();
 
 
@@ -55,15 +55,15 @@ Animal task:
 
 
 
-	Dog extend Animal implements Plyable, Swimmable
+	Dog extend Animal implements Playable, Swimmable
 
-	Cat extend Animal implements Plyable
+	Cat extend Animal implements Playable
 
-	Cow extend Animal implements Plyable
+	Cow extend Animal implements Playable
 
-	Horse extend Animal implements Plyable
+	Horse extend Animal implements Playable
 
-	Parrot extend Animal implements Plyable, Flyable
+	Parrot extend Animal implements Playable, Flyable
 
 	Eagle extend Animal implements Wild, Flyable
 
@@ -75,11 +75,11 @@ Animal task:
 
 	Shark extend Animal implements Wild, Swimmable
 
-	Dolphin extend Animal implements Plyable, Swimmable
+	Dolphin extend Animal implements Playable, Swimmable
 
-	Duck extend Animal implements Plyable, Swimmable, Flyable
+	Duck extend Animal implements Playable, Swimmable, Flyable
 
-	Java extend Animal implements Plyable, Swimmable, Flyable, Wild
+	Java extend Animal implements Playable, Swimmable, Flyable, Wild
 
 
 
@@ -87,7 +87,7 @@ Person implement Swimmable, Playable
 
 Boat implement Swimmable
 
-Airpalne implements Flyable
+Airplane implements Flyable
 
 CydeoCar implement Swimmable, Flyable
 
