@@ -1,0 +1,270 @@
+05/14/2023
+
+Week 14
+Day37 - Exceptions & Exception Handling Intro
+Day38 - Exception Handling Continue
+
+Git Day 3 - Branch Strategy, Team Collaboration
+Git Day 4 - Git with Command Line
+
+Java in the morning/ Git in the afternoon
+__________________________________________________________________
+
+Exceptions
+try catch
+finally
+throw vs throws
+
+Branch Strategy
+Team Collaboration
+Commands
+__________________________________________________________________
+
+Exceptions
+
+What is an exception
+
+	stops the normal flow of execution because of some code
+	we will handle these or fix the code that is causing the exception
+
+Inheritance of Exceptions
+	Throwable
+		Exception -> checked exceptions
+			RuntimeException -> unchecked exceptions
+
+Exceptions are objects
+
+Types of exceptions:
+
+	checked/compile time
+
+		these exceptions MUST be handled for the program to compile
+
+		Ex: Thread.sleep()
+
+	unchecked/run time
+
+		an exception that could occur happens during execution
+		You can handle or fix the code
+
+		Ex: StringIndexOutOfBounds, NullPointerException
+
+How to handle exceptions
+
+	try/catch block
+
+		the try block is for any code we want to run, that could cause an exception
+			try {
+
+			}
+
+		the catch block allows us to determine what code should be run if the specified exception is thrown
+
+			(catch Exception e)
+				Note: 'e' is commonly used as the name
+
+			Ex: catch(NullPointerException e)
+
+    multiple catch blocks
+
+        it is possible to have multiple catch blocks to handle different kinds of exceptions
+
+        -> Note: you want to make the exceptions as specific as possible to not allow unexpected exceptions to be handled
+
+        rule: order of the catch blocks does matter. The Exceptions should be most specific at the top and become more general towards the end
+
+    finally block:
+
+        its optional to add to try/catch
+
+        this code block will run no matter, regardless if there is an exception or not
+
+throw vs throws
+
+    throws: keyword that allows you to ignore an exception
+
+        this is NOT handling the exception, but it allows you to compile
+
+        	-> if you use throws you are accepting that an exception can happen
+
+        used in the method signature line
+        syntax:
+        	method() throws Exception {}
+        Ex:
+        	public static void main(String[] args) throws InterruptedException{ }
+
+    throw: causes an exception to happen, must throw an Exception type object
+    	syntax:
+    		throw new ExceptionObject();
+
+        Ex:
+        	throw new IllegalArgumentException();
+
+Useful exception methods
+
+    printStackTrace():
+    	prints the details about the exception to the console
+
+    getMessage():
+    	returns a String of the message component of the exception
+
+	------------------------------------------------------------------------
+
+IQ: What is the difference between final, finally, finalize()?
+
+	final: variables cannot be changed, class cannot be inherited, and methods cannot be overridden
+
+	finally: block of code used with the try catch. It always runs no matter if there is an exception or not
+
+	finalize(): a method called by the garbage collector to help clean the memory
+__________________________________________________________________
+
+================================================================================================
+
+Git Notes
+
+Branch Strategy
+Team Collaboration
+Commands
+__________________________________________________________________
+
+Git Branching Strategy
+
+master
+	develop
+		feature-a
+		feature-b
+
+Flow from our side:
+
+	-> assume you cloned the project/ make sure your project is up to date
+
+	create a new feature branch locally from the develop branch / update your feature branch with up to date develop branch
+
+	create some changes, then we commit and push to your origin feature branch(if its the first time, the feature branch is created on github)
+
+	create a pull request from your feature branch to the develop branch
+
+	someone approves and merges branches
+
+	repeat above steps for as many feature or changes needed, until a stable version of that application or sprint finishes then
+
+		team creates pull request from develop to master
+
+__________________________________________________________________
+
+Strategies
+
+	The strategy of how git is used within a team can vary. It depends on the team workflow
+
+master
+    develop
+        feature
+
+    + multiple versions
+    - can become complex & increase deployment cycles
+
+master
+    feature
+
+    + better for smaller teams
+    + simpler design
+    - only handles one version
+    - more room for bugs. Testing is done on feature branch then merged to master
+
+production
+    release
+        master
+
+    + multiple environments maintained
+    - not all teams/projects will need multiple versions in different environments
+
+Trunk based
+master
+    no other branch. Commit to master
+
+    + allows continuous integration
+    + always ready for release
+    - best used in small experienced teams
+__________________________________________________________________
+
+Team Collaboration
+
+Team Lead or one selected person: (Set up)
+
+	Create a new java project and enable git
+	Create a .gitignore file and add the main folders to ignore
+		files: out, *.iml, .idea
+	Create a package called utils
+	Create a class called MainUtils
+	Commit the .gitignore and MainUtils files
+	Create the remote repository by sharing the project
+	Create a new branch from master called develop on the remote repository (on github)
+	Invite all team members by going to project settings -> manage access
+
+Other Team Members:
+
+	Go to email or GitHub and accept invite to collaborate with the new repository
+	On the remote repository page find the code button and copy the given link
+	Use the given link to clone the project
+
+Now there is a remote repository and everyone has the project locally
+
+--> After cloning open the git log. right click on the origin develop branch and checkout. This will create a local develop branch
+
+Steps to repeat:
+
+	Update local project with changes from other team members
+	In the local repositories create a new branch from the develop branch
+		- for this practice use your name for each personal branch
+	Makes some changes by adding files or updating a file (work in separate files to avoid conflicts)
+	Commit local changes and push to your origin branch (DO NOT PUSH TO DEVELOP OR MASTER BRANCH)
+	On GitHub create a pull request to merge the changes from your branch to the develop branch.
+	Assign a team member to review and approve
+
+			- If you are assigned a pull request view the commits of your team members. Discuss and if there is no problem approve the pull request
+
+			- Pick assignments of who will review your PR ahead of time, and make sure everyone is assigned so everyone in the group is able to practice both parts
+
+Every team member should go through the flow with the team to do some basic practice right now. When projects for automation start you will need to use git on top of the testing you will need to do, so practice the core git now without worrying about the other parts.
+
+Whole group:
+
+	When you feel there is enough commits made to the develop branch make a pull request merge develop into the master branch
+	Everyone should update their projects before making any more changes
+	Repeat all of the above as many times as needed
+__________________________________________________________________
+
+Git commands
+
+	command | description
+
+	git init | creates a local repository
+	git clone url | clones the given github repo
+	git status | checks the project status
+	git add . | stages all the files
+	git commit -m "" | commits changes and defines the message
+	git push | pushes the commits to the remote
+	git push -u origin branch | pushes and creates upstream branch
+	git fetch | gets the data of the commits
+	git pull | merges changes from remote
+	git branch -u origin/branch | sets upstream branch
+	git branch | checks the current branches and shows active branch
+	git branch branchName | creates a new branch with defined branch name
+	git checkout branchName | checkouts to given branch name
+	git merge branchName | merges the changes from the given branch
+
+__________________________________________________________________
+
+Clone from GitHub Organization
+
+	In an organization there is extra security in order to access
+
+	If you don't have a token create one (follow steps from short video or class)
+	Go to Settings -> Developer Setting (left) -> Personal access tokens (classic)
+	Find the token you are using and select the Configure SSO
+	Authorize the organization
+	Get remote repository link to clone
+	Go to IntelliJ -> File -> New -> Project from version control
+	When it asks to login select by token and provide the token
+	You will be able to clone
