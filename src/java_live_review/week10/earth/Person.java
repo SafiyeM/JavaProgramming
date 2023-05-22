@@ -11,6 +11,11 @@ public class Person {
         this.name = name;
         this.age = age;
     }
+
+    public String toString() {
+        return name + " " + age;
+    }
+
 }
 /*
 - Create a class Person
