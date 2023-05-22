@@ -1,6 +1,7 @@
 package java_programming_lessons.day35_polymorphism;
 
 import java_programming_lessons.day34_abstraction.animalTask.*;
+import java_programming_lessons.day35_polymorphism.transportation.*;
 
 public class PolymorphismPractice {
 
@@ -61,7 +62,30 @@ public class PolymorphismPractice {
 
         System.out.println(isAnimal);  // true
 
-        System.out.println(isAnimal);
+
+        System.out.println("------------------------------------------------");
+
+        Car car = new Tesla("Tesla", "White", 2020, 55_000);
+
+        // There must be relationship with reference type and object type
+        // Tesla extend Car and implements Electric and AutoPilot(AutoPilot extends AutoPark)
+        boolean isTesla = car instanceof Tesla;
+        boolean isAudi = car instanceof Audi;
+
+        boolean isElectricCar = car instanceof Electric;
+        boolean hasAutoPark = car instanceof AutoPark;
+        boolean hasAutoPilot = car instanceof AutoPilot;
+
+
+        System.out.println("isTesla = " + isTesla); // true
+        // Car is not referencing Audi. It is only referencing Tesla Object, that's why Audio is not an instanceOf car
+        System.out.println("isAudi = " + isAudi); // false
+        System.out.println("isElectricCar = " + isElectricCar); // true
+        System.out.println("hasAutoPark = " + hasAutoPark); // true
+        System.out.println("hasAutoPilot = " + hasAutoPilot); // true
+
+        System.out.println("------------------------------------------------");
+
 
 
 
