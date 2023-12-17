@@ -1,0 +1,162 @@
+
+Skip to content
+Pull requests
+Issues
+Codespaces
+Marketplace
+Explore
+@SafiyeM
+Cydeo-B29 /
+Java_Live_Reviews
+Private
+
+Cannot fork because forking is disabled.
+
+Code
+Issues
+Pull requests
+Security
+
+    Insights
+
+Java_Live_Reviews/src/week10/Review 10 Notes.txt
+@Cydeo-Saim
+Cydeo-Saim week 10 notes
+Latest commit 73fd4fa Apr 15, 2023
+History
+1 contributor
+116 lines (76 sloc) 3.69 KB
+04/15/2023
+
+Week 10
+Day27 - Statics Continue, Access Modifiers
+Day28 - OOP Encapsulation
+Day29 - OOP Inheritance
+__________________________________________________________________
+
+static
+access modifiers
+Encapsulation
+Inheritance Intro
+
+- Practice with classes & objects
+
+Avengers: Extra practice sessions
+	Will start by solving codingbat tasks together
+	They are only for if you are behind and want to practice writing more code. I will not address unrelated topics or current topics. Recordings will be available
+
+	Mondays at 1pm - 4 pm EST
+__________________________________________________________________
+
+static
+
+	keyword that allows us to define members that belong to the class
+		opposite of instance which are members that belong to the object
+
+	biggest difference between instance & static
+
+		in order to use instance members:
+			create and use from the object
+
+		in order to use static members:
+			use the class name
+
+	static variable: a variable accessed by the class, there is a single copy of this variable
+		each object has a copy of each instance variable
+
+	static methods: a block of code that is accessed without an object
+		-> used in utility classes
+			these class have useful methods, and because they are static we can call them by the class name
+
+	static blocks
+		this block runs once, before anything else when the class is loaded(used) for the first time
+
+	static import
+
+	 allows you to access one specific static member without giving the class name
+
+		syntax:
+			import static packageName.className.staticMember;
+				or
+			import static packageName.className.*;
+				wildcard allows you to access all static members in that class
+
+	static class
+		nested classes can static
+		this mean an object, of the outer class, does not need to be created to access the inner class
+__________________________________________________________________
+
+access modifiers
+
+    keywords used to define the scope or visibility, where you can use/ access the variables, methods, etc
+
+    [Most Visible] public  -> protected  -> default -> private [Least Visible]
+
+    public: accessible everywhere in the project
+
+    protected: accessible by the classes of the same packages and the sub classes in any package
+    	(second part is about inheritance)
+
+    default: accessible within the same package
+        -> default access is used when the no other access modifier is defined
+
+    private: accessible only in the same class
+__________________________________________________________________
+
+Encapsulation
+
+What is OOP?
+
+	Object Oriented Programming: the concepts that define how an object behaves
+
+    encapsulations allow you to hide your information from direct access. We are able to limit the access to variables by using the private keyword and allowing PUBLIC getters and setters
+
+    getter: method used to get the value of that specific variable
+
+    setter: method used to change/resign the value of that specific variable
+__________________________________________________________________
+
+Inheritance
+
+    allows a class to inherit/pass information into a different class
+
+    	+ provides code re-usability and maintainability
+    	+ good way to organize/group classes that are related
+
+How to inherit in java?
+
+    the extends keyword allows inheritance
+
+terminology to describe inheritance relationship between classes:
+
+    is - a
+    Child is a Parent
+
+    names to describe the different classes:
+    	parent, super, or base class: passes the information
+
+    	child, sub, or derived: gets the information
+
+Object class
+
+	The Object class is the parent of all classes
+		- doesn't need to be defined, it is automatically inherited
+			where toString method is defined
+__________________________________________________________________
+Footer
+© 2023 GitHub, Inc.
+Footer navigation
+
+    Terms
+    Privacy
+    Security
+    Status
+    Docs
+    Contact GitHub
+    Pricing
+    API
+    Training
+    Blog
+    About
+
+Cydeo-Saim
