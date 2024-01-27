@@ -14,6 +14,7 @@ public class PingPong {
 
         String result = "";
 
+
         for (int i = 1; i <= lastNumber; i++) {
 
             if (i % 4 == 0 && i % 3 == 0) {
