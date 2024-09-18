@@ -1,0 +1,246 @@
+package com.theScore.utilities;
+
+import com.google.common.collect.ImmutableMap;
+import com.theScore.constants.CategoryEnum;
+import com.theScore.constants.LeagueEnum;
+import com.theScore.constants.TeamEnum;
+import io.appium.java_client.AppiumBy;
+import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
+import org.openqa.selenium.remote.RemoteWebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.time.Duration;
+import java.util.Arrays;
+import java.util.NoSuchElementException;
+
+
+public class AndroidUtils {
+    protected static AndroidDriver driver;
+    // Static logger instance for this class
+    private static final Logger logger = LoggerFactory.getLogger(AndroidUtils.class);
+    private static final Logger msgLogger = LoggerFactory.getLogger("logMsg");
+
+    private AndroidUtils() {
+        throw new UnsupportedOperationException("Utility class cannot be instantiated");
+    }
+
+    public static Logger getLogger(Class<?> clazz) {
+        return LoggerFactory.getLogger(clazz);
+    }
+
+    public static void scrollToElement(AndroidDriver driver, LeagueEnum leagueEnum) {
+        driver.findElement(AppiumBy.androidUIAutomator(
+                "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView("
+                        + "new UiSelector().text(\"" + leagueEnum.getLeagueName() + "\"));"));
+    }
+
+    public static void swipe(int startX, int startY, int endX, int endY) {
+        AndroidDriver driver = (AndroidDriver) Driver.getDriver("android"); // Get the driver instance
+
+        try {
+            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+            Sequence swipe = new Sequence(finger, 1);
+
+            swipe.addAction(finger.createPointerMove(Duration.ofMillis(0),
+                    PointerInput.Origin.viewport(), startX, startY));
+            swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+            swipe.addAction(finger.createPointerMove(Duration.ofMillis(800),  // Adjusted duration to 800ms
+                    PointerInput.Origin.viewport(), endX, endY));
+            swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+            driver.perform(Arrays.asList(swipe));
+        } catch (Exception e) {
+            System.err.println("Error performing swipe from (" + startX + ", " + startY + ") to (" + endX + ", " + endY + ")");
+            e.printStackTrace();
+        }
+
+    }
+
+    /**
+     * Performs a horizontal swipe gesture on the screen.
+     *
+     * @param startX    The starting X coordinate for the swipe.
+     * @param startY    The Y coordinate for the swipe (can be fixed).
+     * @param width     The width (distance) of the swipe in pixels.
+     * @param direction The direction of the swipe ("left" or "right").
+     * @param percent   The percentage of the swipe area to swipe.
+     */
+    public static void swipeHorizontal(int startX, int startY, int width, int height, String direction, double percent) {
+        AndroidDriver driver = (AndroidDriver) Driver.getDriver("android");
+
+        try {
+            // Validate the direction input and ensure it's one of the expected values
+            if (!direction.equalsIgnoreCase("left") && !direction.equalsIgnoreCase("right")) {
+                throw new IllegalArgumentException("Invalid swipe direction for horizontal swipe: " + direction);
+            }
+
+            ((JavascriptExecutor) driver).executeScript("mobile: swipeGesture", ImmutableMap.of(
+                    "left", startX, "top", startY, "width", width, "height", height,
+                    "direction", direction,
+                    "percent", percent));
+        } catch (Exception e) {
+            logger.error("Error while performing {} swipe  ", direction);
+        }
+    }
+
+    public static void swipeHorizontalUntilElementFound(CategoryEnum category, int startX, int startY, int width, int height, String direction, double percent, int maxSwipes) {
+        AndroidDriver driver = (AndroidDriver) Driver.getDriver("android");
+
+        try {
+            // Validate the direction input and ensure it's one of the expected values
+            if (!direction.equalsIgnoreCase("left") && !direction.equalsIgnoreCase("right")) {
+                throw new IllegalArgumentException("Invalid swipe direction for horizontal swipe: " + direction);
+            }
+            int swipeCount = 0;
+            while (swipeCount < maxSwipes) {
+                try {
+                    WebElement element = driver.findElement(AppiumBy.androidUIAutomator("new UiSelector().text(\"" + category.getDisplayName() + "\")"));
+                    if (element.isDisplayed()) {
+                        logger.info("Element '{}' found after {} swipes", category.getDisplayName(), swipeCount);
+                        return;
+                    }
+                } catch (Exception e) {
+                    // Element not found; continue swiping
+                    logger.debug("Element not found, swiping again... Attempt: {}", swipeCount);
+                }
+
+                // Perform the swipe gesture using JavascriptExecutor for a horizontal swipe
+                ((JavascriptExecutor) driver).executeScript("mobile: swipeGesture", ImmutableMap.of(
+                        "left", startX, "top", startY, "width", width, "height", height,
+                        "direction", direction,
+                        "percent", percent));
+
+                logger.info("Swipe action performed to the {}", direction);
+                swipeCount++;
+            }
+            logger.warn("Element '{}' not found after {} swipes", category.getDisplayName(), maxSwipes);
+        } catch (Exception e) {
+            logger.error("Error while performing {} swipe: {}", direction, e.getMessage());
+        }
+    }
+
+    public static void swipeAction(CategoryEnum focus, String direction) {
+
+        AndroidDriver driver = (AndroidDriver) Driver.getDriver("android");
+
+        try {
+            // Find the element to swipe
+            WebElement swipeElement = driver.findElement(AppiumBy.androidUIAutomator(
+                    "new UiSelector().text(\"" + focus.getCategoryEnum() + "\")"
+            ));
+
+            // Perform the swipe gesture using JavascriptExecutor
+            ((JavascriptExecutor) driver).executeScript("mobile: swipeGesture", ImmutableMap.of(
+                    "elementId", ((RemoteWebElement) swipeElement).getId(),
+                    "direction", direction,
+                    "percent", 0.75
+            ));
+
+            System.out.println("Swipe action performed to the " + direction + " on element: " + focus.getCategoryEnum());
+        } catch (Exception e) {
+            System.err.println("Error while performing swipe on element: " + focus.getCategoryEnum());
+            e.printStackTrace();
+        }
+    }
+
+    public static void swipeAction(TeamEnum focus, String direction) {
+
+        AndroidDriver driver = (AndroidDriver) Driver.getDriver("android");
+
+        try {
+            // Find the element to swipe
+            WebElement swipeElement = driver.findElement(AppiumBy.androidUIAutomator(
+                    "new UiSelector().text(\"" + focus.getTeamName() + "\")"
+            ));
+
+            // Perform the swipe gesture using JavascriptExecutor
+            ((JavascriptExecutor) driver).executeScript("mobile: swipeGesture", ImmutableMap.of(
+                    "elementId", ((RemoteWebElement) swipeElement).getId(),
+                    "direction", direction,
+                    "percent", 0.75
+            ));
+
+            System.out.println("Swipe action performed to the " + direction + " on element: " + focus.getTeamName());
+        } catch (Exception e) {
+            System.err.println("Error while performing swipe on element: " + focus.getTeamName());
+            e.printStackTrace();
+        }
+    }
+
+    public static void swipeUntilDesiredElementVisible(CategoryEnum startEnum, CategoryEnum targetEnum, String direction) {
+        AndroidDriver driver = (AndroidDriver) Driver.getDriver("android");
+
+        try {
+            WebElement swipeElement = driver.findElement(AppiumBy.androidUIAutomator(
+                    "new UiSelector().text(\"" + startEnum.getCategoryEnum() + "\")"));
+            int maxAttempts = 10;
+            int attempts = 0;
+
+            while (attempts < maxAttempts) {
+                try {
+                    WebElement targetElement = driver.findElement(AppiumBy.androidUIAutomator(
+                            "new UiSelector().text(\"" + targetEnum.getCategoryEnum() + "\")"
+                    ));
+
+                    if (targetElement.isDisplayed()) {
+                        System.out.println("Target element '" + targetEnum.getCategoryEnum() + "' is now visible.");
+                        break;
+                    }
+                } catch (NoSuchElementException e) {
+                       swipeElement = driver.findElement(AppiumBy.androidUIAutomator(
+                            "new UiSelector().text(\"" + startEnum.getCategoryEnum() + "\")"));
+                }
+                attempts++;
+            }
+            if (attempts == maxAttempts) {
+                throw new NoSuchElementException("Target element '" + targetEnum.getCategoryEnum() + "' not found after " + maxAttempts + " attempts.");
+            }
+        } catch (Exception e) {
+            System.err.println("Error during swipe operation to find '" + targetEnum.getCategoryEnum() + "': " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public static boolean dismissAdIfPresent() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            WebElement adView = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.fivemobile.thescore:id/ad_view")));
+
+            if (adView.isDisplayed()) {
+                logger.info("Ad is present. Attempting to dismiss...");
+                return true;
+            }
+        } catch (Exception e) {
+            msgLogger.info("No ad found or unable to dismiss ad.");
+        }
+        return false;
+    }
+
+    //    public static void waitForPageTransition() {
+    //        try {
+    //            // Wait for an element unique to the new page to be visible
+    //            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.DEFAULT_TIMEOUT));
+    //            WebElement newPageElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("android:id/content")));
+    //            Assertions.assertTrue(newPageElement.isDisplayed(), "New page did not load correctly.");
+    //            msgLogger.info("\"qfqrfqrNew page loaded successfully.\"");
+    //            logger.info("New page loaded successfully.");
+    //        } catch (TimeoutException e) {
+    //            logger.error("Timed out waiting for the new page to load.");
+    //            Assertions.fail("New page did not load as expected after clicking 'Discover'.");
+    //        } catch (Exception e) {
+    //            logger.error("An error occurred while verifying page transition.");
+    //            Assertions.fail("Test failed due to an unexpected error after clicking 'Discover'.");
+    //        }
+    //    }
+
+
+}
+
+
